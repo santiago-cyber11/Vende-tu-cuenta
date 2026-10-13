@@ -1,0 +1,33 @@
+VENDE TU CUENTA — versión preparada para Firebase
+
+QUÉ SE AÑADIÓ
+- Botón para iniciar sesión con Google mediante Firebase Authentication.
+- Perfil editable en la nube (alias y descripción).
+- Vista de publicaciones del usuario.
+- Historial de ventas preparado para leer compras confirmadas por el servidor.
+- Área de valoraciones, restringida a compras completadas verificadas.
+- Reglas de seguridad iniciales para Firestore.
+
+IMPORTANTE
+No está conectado aún a TU proyecto de Firebase: no tenemos tu configuración. No inventé credenciales ni habilité cobros. Hasta completar la configuración, el inicio de sesión y los datos compartidos no estarán activos. La tienda no está desplegada públicamente.
+
+CONFIGURACIÓN
+1. Entra a https://console.firebase.google.com/ y crea un proyecto.
+2. En Authentication > Sign-in method, activa Google.
+3. En Project settings > Your apps, registra una aplicación web y copia la configuración.
+4. Abre firebase-app.js y reemplaza los cuatro valores REEMPLAZA_ por los valores reales de tu proyecto.
+5. En Firestore Database crea la base de datos y publica las reglas del archivo firestore.rules.
+6. En Authentication > Settings > Authorized domains añade el dominio donde publiques la página (por ejemplo, tu dominio real de Vercel).
+7. Publica la carpeta completa en un hosting HTTPS. No abras index.html como archivo local: los módulos de Firebase necesitan servir la web por HTTP/HTTPS.
+
+PUBLICACIONES
+La página demo existente aún tiene tarjetas de ejemplo y su formulario original. Para convertir las nuevas publicaciones en registros compartidos, el formulario debe conectarse a la función vendeSaveListingToCloud y guardar campos `title`, `price`, `details`, `level` y `imageUrl`. Las imágenes deberían guardarse en Firebase Storage con reglas propias; no se recomienda guardar archivos grandes dentro de Firestore.
+
+RESEÑAS E HISTORIAL
+El historial de ventas no se puede crear de forma segura desde el navegador. La colección `purchases` está bloqueada para escritura directa y debe escribirse desde un backend/Cloud Function después de que una pasarela confirme el pago. Esto evita que alguien se invente ventas o reseñas. Las reseñas solo se habilitan cuando exista una compra completada. El pago del sitio sigue siendo una simulación; no cobra dinero real.
+
+ANTES DE USAR EN PRODUCCIÓN
+- Configurar Firebase y publicar la web.
+- Conectar formulario de publicación e imágenes a Firestore/Storage.
+- Implementar backend y pasarela de pago compatible con la operación.
+- Añadir moderación, reportes, protección de datos y reglas adicionales.
