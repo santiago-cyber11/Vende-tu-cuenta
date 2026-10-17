@@ -6,12 +6,29 @@ import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, ge
  * Pega aquí la configuración de Firebase de TU proyecto.
  * Nunca pongas claves privadas de servidor, secretos de OAuth ni credenciales de pasarela en el navegador.
  */
-const firebaseConfig = {
-  apiKey: "REEMPLAZA_CON_TU_FIREBASE_API_KEY",
-  authDomain: "REEMPLAZA_CON_TU_PROYECTO.firebaseapp.com",
-  projectId: "REEMPLAZA_CON_TU_PROYECTO",
-  appId: "REEMPLAZA_CON_TU_FIREBASE_APP_ID"
-};
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4s8YRp6M-iyBbbSuec9bBp4dITcy2BYc",
+    authDomain: "vende-tu-cuenta.firebaseapp.com",
+    projectId: "vende-tu-cuenta",
+    storageBucket: "vende-tu-cuenta.firebasestorage.app",
+    messagingSenderId: "486652142254",
+    appId: "1:486652142254:web:ec4d50432877c7b5b3433f",
+    measurementId: "G-23XXRJ8RFY"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 const configured = !Object.values(firebaseConfig).some(v => String(v).includes("REEMPLAZA_"));
 window.vendeCloudConfigured = configured;
 const $ = id => document.getElementById(id);
