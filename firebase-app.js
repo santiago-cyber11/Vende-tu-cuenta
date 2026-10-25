@@ -6,16 +6,7 @@ import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, ge
  * Pega aquí la configuración de Firebase de TU proyecto.
  * Nunca pongas claves privadas de servidor, secretos de OAuth ni credenciales de pasarela en el navegador.
  */
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
     apiKey: "AIzaSyC4s8YRp6M-iyBbbSuec9bBp4dITcy2BYc",
     authDomain: "vende-tu-cuenta.firebaseapp.com",
     projectId: "vende-tu-cuenta",
@@ -23,21 +14,7 @@ import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, ge
     messagingSenderId: "486652142254",
     appId: "1:486652142254:web:ec4d50432877c7b5b3433f",
     measurementId: "G-23XXRJ8RFY"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-const configured = !Object.values(firebaseConfig).some(v => String(v).includes("REEMPLAZA_"));
-window.vendeCloudConfigured = configured;
-const $ = id => document.getElementById(id);
-let auth=null, db=null, currentUser=null, activeSellerId=null;
-const fmt = n => new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(Number(n)||0);
-function status(msg){ if($('loginStatus')) $('loginStatus').textContent=msg; if($('myProfileStatus')) $('myProfileStatus').textContent=msg; }
-function toast(msg){const t=$('siteToast');if(!t)return;t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
-function safeText(s){return String(s||'').replace(/[<>]/g,'').trim();}
-function openMyProfile(){ $('myProfileModal')?.classList.add('open'); loadMyProfile(); }
+  
 async function loadMyProfile(){
  if(!currentUser){$('myProfileStatus').textContent='Inicia sesión con Google para administrar tu perfil.';$('myListings').textContent='Inicia sesión para ver tus publicaciones.';$('mySales').textContent='Inicia sesión para ver tu historial.';return;}
  try{
