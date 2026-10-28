@@ -7,6 +7,7 @@ import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, ge
  * Nunca pongas claves privadas de servidor, secretos de OAuth ni credenciales de pasarela en el navegador.
  */
 
+    const firebaseConfig = {
     apiKey: "AIzaSyC4s8YRp6M-iyBbbSuec9bBp4dITcy2BYc",
     authDomain: "vende-tu-cuenta.firebaseapp.com",
     projectId: "vende-tu-cuenta",
@@ -14,6 +15,10 @@ import { getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, ge
     messagingSenderId: "486652142254",
     appId: "1:486652142254:web:ec4d50432877c7b5b3433f",
     measurementId: "G-23XXRJ8RFY"
+    };
+    let configured = !!firebaseConfig.apiKey;
+let app, auth, db;
+let currentUser = null;
   
 async function loadMyProfile(){
  if(!currentUser){$('myProfileStatus').textContent='Inicia sesión con Google para administrar tu perfil.';$('myListings').textContent='Inicia sesión para ver tus publicaciones.';$('mySales').textContent='Inicia sesión para ver tu historial.';return;}
