@@ -59,6 +59,7 @@ document.addEventListener('vende-google-login-request',async()=>{
 });
 document.addEventListener('DOMContentLoaded',()=>{
     const $ = (id) => document.getElementById(id);
+    const status = (message) => { const el = document.getElementById('status'); if (el) el.textContent = message; };
  $('openMyProfile')?.addEventListener('click',openMyProfile);
  $('closeMyProfile')?.addEventListener('click',()=>$('myProfileModal')?.classList.remove('open'));
  $('myProfileModal')?.addEventListener('click',e=>{if(e.target===$('myProfileModal'))$('myProfileModal').classList.remove('open');});
