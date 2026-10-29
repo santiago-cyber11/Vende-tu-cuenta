@@ -58,6 +58,7 @@ document.addEventListener('vende-google-login-request',async()=>{
  catch(e){status('No se pudo iniciar sesión: '+(e.code||'error')+'. Comprueba que Google esté activado en Firebase Authentication.');}
 });
 document.addEventListener('DOMContentLoaded',()=>{
+    const $ = (id) => document.getElementById(id);
  $('openMyProfile')?.addEventListener('click',openMyProfile);
  $('closeMyProfile')?.addEventListener('click',()=>$('myProfileModal')?.classList.remove('open'));
  $('myProfileModal')?.addEventListener('click',e=>{if(e.target===$('myProfileModal'))$('myProfileModal').classList.remove('open');});
